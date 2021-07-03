@@ -2,14 +2,18 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../../out-tsc/lib",
-    "target": "es2015",
+    "module": "commonjs",
+    "outDir": "../../dist/out-tsc",
     "declaration": true,
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "types": ["node"],
+    "target": "es2015",
+    "moduleResolution": "node",
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": [
-      "node"
-    ],
     "lib": [
       "dom",
       "es2018"
