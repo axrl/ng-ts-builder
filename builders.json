@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/@angular-devkit/architect/src/builders-schema.json",
+  "builders": {
+    "array_command": {
+      "implementation": "./src",
+      "schema": "./src/schema.json",
+      "description": "Execute commands in array one by one."
+    }
+  }
+}

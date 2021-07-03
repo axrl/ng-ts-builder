@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
-  "title": "Process execution",
-  "description": "Process execution",
+  "title": "Process execution commands",
+  "description": "Execute commands in array one by one.",
   "type": "object",
   "properties": {
     "array_command": {

@@ -1,15 +1,15 @@
-import {
-  BuilderContext,
-  BuilderOutput,
-  createBuilder
-} from '@angular-devkit/architect';
-import { Schema } from './schema';
+import { BuilderOutput,BuilderContext, createBuilder } from '@angular-devkit/architect';
+import { JsonObject } from '@angular-devkit/core';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 const execPromise = promisify(exec);
 
-export async function runCommand(
-  input: Schema,
+interface Options extends JsonObject {
+  array_command: string[];
+}
+
+async function runCommand(
+  input: Options,
   _context: BuilderContext
 ): Promise<BuilderOutput> {
   const results: string[] = [];
@@ -31,6 +31,6 @@ export async function runCommand(
   }
 }
 
-export const CommandBuilder = createBuilder(runCommand);
+export default createBuilder<Options>(runCommand);
 
-export default CommandBuilder;
+
