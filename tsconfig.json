@@ -2,6 +2,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@axrl/ng-ts-builder": [
+        "dist/axrl/ng-ts-builder/axrl-ng-ts-builder",
+        "dist/axrl/ng-ts-builder"
+      ]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

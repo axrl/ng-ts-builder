@@ -1,0 +1,24 @@
+{
+  "name": "@axrl/ng-ts-builder",
+  "version": "0.0.1",
+  "builders": "./builders.json",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/axrl/ng-ts-builder"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Axrl",
+    "email": "axrl@mail.ru"
+  },
+  "homepage": "https://github.com/axrl/ng-ts-builder",
+  "peerDependencies": {
+    "@angular-devkit/architect": ">0.1201.1"
+    },
+  "dependencies": {
+    "execa": "^5.0.0"
+  }
+}
