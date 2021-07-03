@@ -1,6 +1,6 @@
 {
   "name": "@axrl/ng-ts-builder",
-  "version": "0.0.1-beta",
+  "version": "0.0.2-beta",
   "builders": "./builders.json",
   "publishConfig": {
     "access": "public"
