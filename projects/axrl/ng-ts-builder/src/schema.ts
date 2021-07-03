@@ -1,3 +1,3 @@
 export interface Schema {
-  commands: string[];
+  array_command: string[];
 }

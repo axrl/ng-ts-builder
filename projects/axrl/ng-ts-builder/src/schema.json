@@ -4,10 +4,15 @@
   "description": "Process execution",
   "type": "object",
   "properties": {
-    "command": {
-      "type": "string"
+    "array_command": {
+      "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
     }
   },
   "additionalProperties": false,
-  "required": ["command"]
+  "required": ["array_command"]
 }

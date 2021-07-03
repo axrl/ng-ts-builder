@@ -19,6 +19,6 @@
     "@angular-devkit/architect": ">0.1201.1"
     },
   "dependencies": {
-    "execa": "^5.0.0"
+    "tslib": "^2.3.0"
   }
 }

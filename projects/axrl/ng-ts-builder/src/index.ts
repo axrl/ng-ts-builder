@@ -14,8 +14,8 @@ export async function runCommand(
 ): Promise<BuilderOutput> {
   const results: string[] = [];
   try {
-    for (let i = 0; i < input.commands.length; i += 1) {
-      const command = input.commands[i];
+    for (let i = 0; i < input.array_command.length; i += 1) {
+      const command = input.array_command[i];
       const result = await execPromise(command, {
         encoding: 'utf-8'
       });
