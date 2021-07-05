@@ -15,20 +15,20 @@ const util_1 = require("util");
 const execPromise = util_1.promisify(child_process_1.exec);
 function runCommand(input, _context) {
     return __awaiter(this, void 0, void 0, function* () {
-        const results = [];
         try {
             for (let i = 0; i < input.array_command.length; i += 1) {
                 const command = input.array_command[i];
+                console.log(`Execute command ${i}: ${command}`);
                 const result = yield execPromise(command, {
                     encoding: 'utf-8'
                 });
+                console.log('Ok.\n' + result);
                 _context.logger.info(result.stdout);
-                results.push(result.stdout);
             }
             ;
             return {
                 success: true,
-                stdout: results.join('\n')
+                stdout: "All tasks complete!"
             };
         }
         catch (error) {

@@ -12,19 +12,19 @@ async function runCommand(
   input: Options,
   _context: BuilderContext
 ): Promise<BuilderOutput> {
-  const results: string[] = [];
   try {
     for (let i = 0; i < input.array_command.length; i += 1) {
       const command = input.array_command[i];
+      console.log(`Execute command ${i}: ${command}`);
       const result = await execPromise(command, {
         encoding: 'utf-8'
       });
+      console.log('Ok.\n' + result);
       _context.logger.info(result.stdout);
-      results.push(result.stdout);
     };
     return {
       success: true,
-      stdout: results.join('\n')
+      stdout: "All tasks complete!"
     };
   } catch (error) {
     return { error: error.toString(), success: false }
