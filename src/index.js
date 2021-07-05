@@ -22,7 +22,7 @@ function runCommand(input, _context) {
                 const result = yield execPromise(command, {
                     encoding: 'utf-8'
                 });
-                console.log('Ok.\n' + result);
+                console.log('Ok.\n' + result.stdout);
                 _context.logger.info(result.stdout);
             }
             ;

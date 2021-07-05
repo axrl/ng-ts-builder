@@ -19,7 +19,7 @@ async function runCommand(
       const result = await execPromise(command, {
         encoding: 'utf-8'
       });
-      console.log('Ok.\n' + result);
+      console.log('Ok.\n' + result.stdout);
       _context.logger.info(result.stdout);
     };
     return {
