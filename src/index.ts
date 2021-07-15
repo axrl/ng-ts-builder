@@ -1,7 +1,9 @@
-import { BuilderOutput,BuilderContext, createBuilder } from '@angular-devkit/architect';
+import { BuilderOutput, BuilderContext, createBuilder } from '@angular-devkit/architect';
 import { JsonObject } from '@angular-devkit/core';
 import { exec } from 'child_process';
 import { promisify } from 'util';
+import Listr from 'listr';
+
 const execPromise = promisify(exec);
 
 interface Options extends JsonObject {
@@ -13,15 +15,15 @@ async function runCommand(
   _context: BuilderContext
 ): Promise<BuilderOutput> {
   try {
-    for (let i = 0; i < input.array_command.length; i += 1) {
-      const command = input.array_command[i];
-      console.log(`Execute command ${i}: ${command}`);
-      const result = await execPromise(command, {
-        encoding: 'utf-8'
-      });
-      console.log('Ok.\n' + result.stdout);
-      _context.logger.info(result.stdout);
-    };
+    const list = new Listr(input.array_command.map(
+      (command, i) => ({
+        title: `Execute command ${i}: ${command}`,
+        task: async () => await execPromise(command, {
+          encoding: 'utf-8'
+        })
+      })
+    ));
+    await list.run();
     return {
       success: true,
       stdout: "All tasks complete!"
@@ -32,5 +34,3 @@ async function runCommand(
 }
 
 export default createBuilder<Options>(runCommand);
-
-
