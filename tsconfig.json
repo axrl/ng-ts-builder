@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "tsconfig",
+    "baseUrl": "./",
     "target": "es6",
     "declaration": true,
     "module": "commonjs",
@@ -16,6 +16,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strictNullChecks": true,
-    "types": ["node"]
+    "strict": true,
+    "sourceRoot": "./src",
   }
 }

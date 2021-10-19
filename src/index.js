@@ -16,16 +16,26 @@ const architect_1 = require("@angular-devkit/architect");
 const child_process_1 = require("child_process");
 const util_1 = require("util");
 const listr_1 = __importDefault(require("listr"));
-const execPromise = util_1.promisify(child_process_1.exec);
+const execPromise = (0, util_1.promisify)(child_process_1.exec);
 function runCommand(input, _context) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const list = new listr_1.default(input.array_command.map((command, i) => ({
                 title: `Execute command ${i}: ${command}`,
                 task: () => __awaiter(this, void 0, void 0, function* () {
-                    return yield execPromise(command, {
-                        encoding: 'utf-8'
-                    });
+                    try {
+                        const result = yield execPromise(command, {
+                            encoding: 'utf-8'
+                        });
+                        if (result.stderr) {
+                            console.log(`stderr - ${result.stderr}`);
+                        }
+                        ;
+                    }
+                    catch (error) {
+                        console.log(error);
+                    }
+                    ;
                 })
             })));
             yield list.run();
@@ -35,9 +45,9 @@ function runCommand(input, _context) {
             };
         }
         catch (error) {
-            return { error: error.toString(), success: false };
+            return { error: typeof error == 'string' ? error : JSON.stringify(error), success: false };
         }
     });
 }
-exports.default = architect_1.createBuilder(runCommand);
+exports.default = (0, architect_1.createBuilder)(runCommand);
 //# sourceMappingURL=index.js.map

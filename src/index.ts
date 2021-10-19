@@ -16,11 +16,20 @@ async function runCommand(
 ): Promise<BuilderOutput> {
   try {
     const list = new Listr(input.array_command.map(
-      (command, i) => ({
+      (command, i) => <Listr.ListrTask>({
         title: `Execute command ${i}: ${command}`,
-        task: async () => await execPromise(command, {
-          encoding: 'utf-8'
-        })
+        task: async () => {
+          try {
+            const result = await execPromise(command, {
+              encoding: 'utf-8'
+            });
+            if (result.stderr) {
+              console.log(`stderr - ${result.stderr}`);
+            };
+          } catch (error) {
+            console.log(error);
+          };
+        }
       })
     ));
     await list.run();
@@ -28,8 +37,8 @@ async function runCommand(
       success: true,
       stdout: "All tasks complete!"
     };
-  } catch (error) {
-    return { error: error.toString(), success: false }
+  } catch (error: any) {
+    return { error: typeof error == 'string' ? error : JSON.stringify(error), success: false }
   }
 }
 
