@@ -1,6 +1,6 @@
 {
   "name": "@axrl/ng-ts-builder",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "main": "src/index.js",
   "builders": "./builders.json",
   "publishConfig": {
@@ -22,12 +22,12 @@
   "homepage": "https://github.com/axrl/ng-ts-builder",
   "devDependencies": {
     "@types/listr": "^0.14.4",
-    "@types/node": "^16.11.1",
-    "typescript": "^4.4.4"
+    "@types/node": "^16.11.12",
+    "typescript": "^4.5.2"
   },
   "dependencies": {
-    "@angular-devkit/architect": "0.1202.10",
-    "@angular/cli": "^12.2.10",
+    "@angular-devkit/architect": "0.1300.04",
+    "@angular/cli": "^13.0.4",
     "listr": "^0.14.3"
   }
 }
